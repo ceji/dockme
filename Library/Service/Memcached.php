@@ -12,9 +12,10 @@ class Memcached extends ServiceGeneric {
     {
         $config = $this->di['config'];
 
-        echo '' . $config->projectName . '-memcached:
+        return $config->projectName . '-memcached:
   image: phpdockerio/memcached:latest
-  container_name: ' . $config->projectName . '-memcached';
+  container_name: ' . $config->projectName . '-memcached'
+            . "\n";
     }
 
 }

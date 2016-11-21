@@ -17,7 +17,7 @@ class ServiceGeneric {
     public $di;
 
     public function getName() {
-        return __CLASS__;
+        return get_class($this);
     }
 
     public function __construct(Container $di)

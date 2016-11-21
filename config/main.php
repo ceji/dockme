@@ -16,7 +16,7 @@ $di['config'] = function() {
     $config = new Config();
     $config->active = true;
     $config->projectName = 'ai';
-    $config->serviceList = ['memcached'];
+    $config->serviceList = ['memcached', 'redis'];
     return $config;
 };
 
