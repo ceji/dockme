@@ -1,7 +1,12 @@
 <?php
 
 require_once "config/main.php";
+require_once "config/Config.php";
 
-foreach ($mainConfig['services'] as $service) {
-    shell_exec('sudo docker rm -f ' . $mainConfig['name'] . '-' . $service);
+
+
+$config = $di['config'];
+
+foreach ($config->serviceList as $service) {
+    shell_exec('sudo docker rm -f ' . $config->projectName . '-' . $service);
 }
