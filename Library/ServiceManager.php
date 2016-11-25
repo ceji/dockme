@@ -63,6 +63,7 @@ class ServiceManager {
         $globalYml = '';
         foreach($this->serviceList as $service) {
             $globalYml .= $service->getYml();
+            $globalYml .= $service->getYmlLinks($this->serviceList);
         }
 
         return $globalYml;

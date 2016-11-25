@@ -43,6 +43,11 @@ $di['config'] = function() {
             'DATABASE' => $config->projectName,
             'USER' => 'userme',
             'PASSWORD' => 'passme'
+        ],
+        'nginx' => [
+            'port_local' => 8383,
+            'port_docker' => 80,
+            'linkedTo' => ['redis']
         ]
     ];
     return $config;
