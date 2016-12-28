@@ -47,7 +47,16 @@ $di['config'] = function() {
         'nginx' => [
             'port_local' => 8383,
             'port_docker' => 80,
-            'linkedTo' => ['redis']
+            'linkedTo' => [
+                'redis'
+            ]
+        ],
+        'fpm' => [
+            'linkedTo' => [
+                'redis',
+                'memcached',
+                'mysql'
+            ]
         ]
     ];
     return $config;

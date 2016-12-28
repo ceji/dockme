@@ -9,5 +9,6 @@ if ($config->active) {
     $serviceManager->addService('Redis');
     $serviceManager->addService('Mysql');
     $serviceManager->addService('Nginx');
+    $serviceManager->addService('Fpm');
     echo $serviceManager->getYml();
 }
