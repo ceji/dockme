@@ -14,7 +14,7 @@ class Fpm extends ServiceGeneric {
 
         return $config->projectName . '-fpm:
   build: .
-  dockerfile: php-fpm/Dockerfile
+  dockerfile: vendor/ceji/dockme/php-fpm/Dockerfile
   container_name: ' . $config->projectName . '-fpm
   volumes:
       - ..:/var/www/' . $config->projectName . '
