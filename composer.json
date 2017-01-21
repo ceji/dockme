@@ -14,7 +14,7 @@
     "pimple/pimple": "~3.0"
   },
   "bin": [
-    "bin/run.sh"
+    "bin/dockme"
   ],
   "require-dev": {
     "raveren/kint": "^1.0"
