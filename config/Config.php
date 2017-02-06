@@ -4,7 +4,8 @@
  * Date: 21/11/16 16:22
  */
 
-require_once __DIR__ . "/../../../autoload.php";
+$loader = require_once __DIR__ . "/../../../autoload.php";
+
 
 use Pimple\Container;
 
@@ -27,6 +28,12 @@ class Config {
     public $availableServiceList;
 }
 
+
+
+
+
+
+
 /**
  * DI
  */
@@ -36,22 +43,22 @@ $di['config'] = function() {
     $config->active = true;
     $config->projectName = 'ai';
     $config->availableServiceList = [
-        'memcached' => [],
-        'redis' => [],
-        'mysql' => [
+        'Memcached' => [],
+        'Redis' => [],
+        'Mysql' => [
             'ROOT_PASSWORD' => 'azerty',
             'DATABASE' => $config->projectName,
             'USER' => 'userme',
             'PASSWORD' => 'passme'
         ],
-        'nginx' => [
+        'Nginx' => [
             'port_local' => 8383,
             'port_docker' => 80,
             'linkedTo' => [
                 'redis'
             ]
         ],
-        'fpm' => [
+        'Fpm' => [
             'linkedTo' => [
                 'redis',
                 'memcached',

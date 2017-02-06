@@ -12,9 +12,9 @@ class Redis extends ServiceGeneric {
     {
         $config = $this->di['config'];
 
-        return $config->projectName . '-redis:
+        return $config->projectName . '-'. $this->getName() . ':
   image: phpdockerio/redis:latest
-  container_name: ' . $config->projectName . '-redis' .
+  container_name: ' . $config->projectName . '-'. $this->getName() . '' .
             "\n";
     }
 

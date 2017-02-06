@@ -1,9 +1,69 @@
 #!/bin/bash
 
-echo "Dockerisation in progress.........."
+
+function usage
+{
+    echo "
+        |\\
+        | \\
+        |  \\
+        |___\\
+_____\\--|----/______
+      \\_____/
+
+NAME:
+    Dockme - Generator of docker containers with custom services
+
+USAGE:
+    vendor/bin/dockme [arguments]
+
+VERSION:
+    0.1
+
+SERVICES :
+    - mysql
+    - redis
+    - php
+
+OPTIONS:
+    -s, --service=serviceName      : Create a docker container with serviceName
+    -h, --help                     : Display this help
+"
+}
+
+service=''
+interactive=''
+while [ "$1" != "" ]; do
+    case $1 in
+        -s | --service )        shift
+                                service=$1
+                                ;;
+        -i | --interactive )    interactive=1
+                                ;;
+        -h | --help )           usage
+                                exit
+                                ;;
+        * )                     usage
+                                exit 1
+    esac
+    shift
+done
+
+
+if [ "$interactive" = "1" ]; then
+
+    response=
+
+    echo -n "Enter name of service > "
+    read response
+    if [ -n "$response" ]; then
+        service=$response
+    fi
+fi
+
+
+echo "Dockerisation in progress"
 php vendor/ceji/dockme/init.php >> /dev/null
-php vendor/ceji/dockme/docker-compose.php | sudo docker-compose -f - up -d
+php vendor/ceji/dockme/docker-compose.php $service | sudo docker-compose -f - up -d
 echo "Here are the Docker containers created :"
 sudo docker ps
-
-php vendor/ceji/dockme/docker-compose.php

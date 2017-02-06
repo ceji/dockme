@@ -11,11 +11,11 @@ class Nginx extends ServiceGeneric {
     public function getYml()
     {
         $config = $this->di['config'];
-        $nginxConfig = $config->availableServiceList['nginx'];
+        $nginxConfig = $config->availableServiceList[$this->getName()];
 
-        return $config->projectName . '-nginx:
+        return $config->projectName . '-'. $this->getName() . ':
   image: phpdockerio/nginx:latest
-  container_name: ' . $config->projectName . '-nginx
+  container_name: ' . $config->projectName . '-'. $this->getName() . '
   volumes:
       - ..:/var/www/' . $config->projectName . '
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf

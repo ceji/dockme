@@ -13,9 +13,9 @@ class Mysql extends ServiceGeneric {
         $config = $this->di['config'];
         $mysqlConfig = $config->availableServiceList['mysql'];
 
-        return $config->projectName . '-mysql:
+        return $config->projectName . '-'. $this->getName() . ':
   image: mysql:5.7
-  container_name: ' . $config->projectName . '-mysql
+  container_name: ' . $config->projectName . '-'. $this->getName() . '
   environment:
     - MYSQL_ROOT_PASSWORD=' . $mysqlConfig['ROOT_PASSWORD'] . '
     - MYSQL_DATABASE=' . $mysqlConfig['DATABASE'] . '
